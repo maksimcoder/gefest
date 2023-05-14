@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from '@mui/material';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 
 import { router } from 'router/router';
