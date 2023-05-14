@@ -41,6 +41,9 @@ jobs:
     - name: check dir
       run: pwd
 
+    - name: check dir
+      run: ls /home/runner/work/gefest/gefest
+
     # - name: Deploy
     #   run: set -eu
 
