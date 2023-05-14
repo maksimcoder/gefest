@@ -63,4 +63,4 @@ jobs:
       run: chmod 600 "$HOME/.ssh/key"
 
     - name: Push to server
-      run: cd build && rsync -e "ssh -p 20022 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete root@46.19.67.87:/var/www/html
+      run: cd build && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete root@46.19.67.87:/var/www/html
