@@ -48,13 +48,11 @@ jobs:
       run: set -eu
 
     - name: Create dir
-      run: mkdir "$HOME/.ssh"
-
-    - name: check dir after mkdir
-      run: pwd
-
+      run: mkdir "~/.ssh/"
+    # - name: Echo info
+    #   run: echo "${{ secrets.key }}" > "$HOME/.ssh/private.key"
     - name: Echo info
-      run: echo "${{ secrets.key }}" > "$HOME/.ssh/key"
+      run: echo "${{ secrets.key }}" > "~/.ssh/private.key"
 
     - name: check dir
       run: ls /home/runner/work/gefest/gefest
@@ -63,4 +61,4 @@ jobs:
       run: chmod 600 "$HOME/.ssh/key"
 
     - name: Push to server
-      run: cd build && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete root@46.19.67.87:/var/www/html
+      run: cd build && rsync -e "ssh -i ~/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete root@46.19.67.87:/var/www/html
