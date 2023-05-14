@@ -44,17 +44,20 @@ jobs:
     - name: check dir
       run: ls /home/runner/work/gefest/gefest
 
-    # - name: Deploy
-    #   run: set -eu
+    - name: Deploy
+      run: set -eu
 
-    # - name: Create dir
-    #   run: mkdir "$HOME/.ssh"
+    - name: Create dir
+      run: mkdir "$HOME/.ssh"
 
-    # - name: Echo info
-    #   run: echo "${{ secrets.timeweb }}" > "$HOME/.ssh/key"
+    - name: check dir after mkdir
+      run: pwd
 
-    # - name: add ssh
-    #   run: chmod 600 "$HOME/.ssh/key"
+    - name: Echo info
+      run: echo "${{ secrets.timeweb }}" > "$HOME/.ssh/key"
+
+    - name: add ssh
+      run: chmod 600 "$HOME/.ssh/key"
 
     # - name: Push to server
     #   run: cd build && rsync -e "ssh -p 20022 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . root@46.19.67.87/var/www/html
