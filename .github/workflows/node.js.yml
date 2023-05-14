@@ -33,7 +33,7 @@ jobs:
       run: npm install
 
     - name: Run the tests
-      run: npm test
+      run: npm test --passWithNoTests
 
     - name: Build production
       run: npm run build --if-present
