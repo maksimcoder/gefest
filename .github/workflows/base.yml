@@ -56,6 +56,9 @@ jobs:
     - name: Echo info
       run: echo "${{ secrets.timeweb }}" > "$HOME/.ssh/key"
 
+    - name: check dir
+      run: ls /home/runner/work/gefest/gefest
+
     - name: add ssh
       run: chmod 600 "$HOME/.ssh/key"
 
