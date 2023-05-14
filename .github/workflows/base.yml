@@ -37,3 +37,23 @@ jobs:
 
     - name: Build production
       run: npm run build --if-present
+
+    - name: Deploy
+    - runs-on: ubuntu-22.04
+    - run: set -eu
+
+    - name: Create dir
+    - runs-on: ubuntu-22.04
+    - run: mkdir "$HOME/.ssh"
+
+    - name: Echo info
+    - runs-on: ubuntu-22.04
+    - run: echo "${{ secrets.timeweb }}" > "$HOME/.ssh/key"
+
+    - name: add ssh
+    - runs-on: ubuntu-22.04
+    - run: chmod 600 "$HOME/.ssh/key"
+
+    - name: Push to server
+    - runs-on: ubuntu-22.04
+    - run: cd build && rsync -e "ssh -p 20022 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . root@46.19.67.87/var/www/html
