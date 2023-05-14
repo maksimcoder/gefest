@@ -54,7 +54,7 @@ jobs:
       run: pwd
 
     - name: Echo info
-      run: echo "${{ secrets.timeweb }}" > "$HOME/.ssh/key"
+      run: echo "${{ secrets.key }}" > "$HOME/.ssh/key"
 
     - name: check dir
       run: ls /home/runner/work/gefest/gefest
