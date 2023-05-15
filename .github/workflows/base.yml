@@ -53,11 +53,11 @@ jobs:
     # - name: check dir after mkdir
     #   run: pwd
 
-    - name: add ssh
-      run: chmod 600 "$HOME/.ssh/key"
-
     - name: Echo info
       run: echo "${{ secrets.key }}" > "$HOME/.ssh/key"
+
+    - name: add ssh
+      run: chmod 600 "$HOME/.ssh/key"
 
     # - name: check dir
     #   run: ls /home/runner/work/gefest/gefest
