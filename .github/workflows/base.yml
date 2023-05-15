@@ -45,7 +45,6 @@ jobs:
     #   run: ls /home/runner/work/gefest/gefest
 
     - name: Deploy to Timeweb
-      uses: PeaceMaker69/timeweb-action@v2.0.7
       with:
         domain: '46.19.67.87'
         ssh_username: 'root'
