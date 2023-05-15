@@ -38,11 +38,11 @@ jobs:
     - name: Build production
       run: npm run build --if-present
 
-    - name: check dir
-      run: pwd
+    # - name: check dir
+    #   run: pwd
 
-    - name: check dir
-      run: ls /home/runner/work/gefest/gefest
+    # - name: check dir
+    #   run: ls /home/runner/work/gefest/gefest
 
     - name: Deploy
       run: set -eu
@@ -50,19 +50,17 @@ jobs:
     - name: Create dir
       run: mkdir "$HOME/.ssh"
 
-    - name: check dir after mkdir
-      run: pwd
-
-    # - name: Echo info
-    #   run: echo "${{ secrets.key }}" > "$HOME/.ssh/private.key"
-    - name: Echo info
-      run: echo "${{ secrets.key }}" > "$HOME/.ssh/private.key"
-
-    - name: check dir
-      run: ls /home/runner/work/gefest/gefest
+    # - name: check dir after mkdir
+    #   run: pwd
 
     - name: add ssh
       run: chmod 600 "$HOME/.ssh/key"
+
+    - name: Echo info
+      run: echo "${{ secrets.key }}" > "$HOME/.ssh/key"
+
+    # - name: check dir
+    #   run: ls /home/runner/work/gefest/gefest
 
     - name: Push to server
       run: cd build && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete root@46.19.67.87:/var/www/html
