@@ -54,13 +54,13 @@ jobs:
     #   run: pwd
 
     - name: Echo info
-      run: echo "${{ secrets.key }}" > "$HOME/.ssh/key"
+      run: echo "${{ secrets.key }}" > "$HOME/.ssh/private.key"
 
     - name: add ssh
-      run: chmod 600 "$HOME/.ssh/key"
+      run: chmod 600 "$HOME/.ssh/private.key"
 
     # - name: check dir
     #   run: ls /home/runner/work/gefest/gefest
 
     - name: Push to server
-      run: cd build && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete root@46.19.67.87:/var/www/html
+      run: cd build && rsync -e "ssh -i $HOME/.ssh/private.key -o StrictHostKeyChecking=no" --archive --compress --delete root@46.19.67.87:/var/www/html
