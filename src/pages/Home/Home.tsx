@@ -7,7 +7,7 @@ const Home = () => {
 		// <Typography color={theme.palette.secondary.main} variant='h1'>
 		// 	home page
 		// </Typography>
-		<h1 className={styles.heading}>homepage</h1>
+		<h1 className={styles.heading}>updated</h1>
 	);
 };
 
