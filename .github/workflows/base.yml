@@ -44,23 +44,33 @@ jobs:
     # - name: check dir
     #   run: ls /home/runner/work/gefest/gefest
 
-    - name: Deploy
-      run: set -eu
+    - name: Deploy to Timeweb
+    uses: PeaceMaker69/timeweb-action@v2.0.7
+    with:
+      domain: '46.19.67.87'
+      ssh_username: 'root'
+      ssh_key: ${{ secrets.key }}
+      local_path: 'build/'
+      remote_path: '/var/www/html'
 
-    - name: Create dir
-      run: mkdir "$HOME/.ssh"
 
-    # - name: check dir after mkdir
-    #   run: pwd
+    # - name: Deploy
+    #   run: set -eu
 
-    - name: Echo info
-      run: echo "${{ secrets.key }}" > "$HOME/.ssh/key"
+    # - name: Create dir
+    #   run: mkdir "$HOME/.ssh"
 
-    - name: add ssh
-      run: chmod 600 "$HOME/.ssh/key"
+    # # - name: check dir after mkdir
+    # #   run: pwd
 
-    # - name: check dir
-    #   run: ls /home/runner/work/gefest/gefest
+    # - name: Echo info
+    #   run: echo "${{ secrets.key }}" > "$HOME/.ssh/key"
 
-    - name: Push to server
-      run: cd build && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete root@46.19.67.87:/var/www/html
+    # - name: add ssh
+    #   run: chmod 600 "$HOME/.ssh/key"
+
+    # # - name: check dir
+    # #   run: ls /home/runner/work/gefest/gefest
+
+    # - name: Push to server
+    #   run: cd build && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete root@46.19.67.87:/var/www/html
