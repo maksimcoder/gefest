@@ -1,13 +1,13 @@
 import { ReactElement } from 'react';
 
-import { Home } from 'pages/Home/Home';
+import { LoginPage } from 'pages';
 
 enum ERoutes {
-	Home = '/',
+	LoginPage = '/login',
 }
 
 const RoutesComponents: Record<ERoutes, ReactElement> = {
-	[ERoutes.Home]: <Home />,
+	[ERoutes.LoginPage]: <LoginPage />,
 };
 
 export { ERoutes, RoutesComponents };

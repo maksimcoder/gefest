@@ -3,8 +3,8 @@ import { ERoutes, RoutesComponents } from 'router/routes';
 
 const router = createBrowserRouter([
 	{
-		path: ERoutes.Home,
-		element: RoutesComponents[ERoutes.Home],
+		path: ERoutes.LoginPage,
+		element: RoutesComponents[ERoutes.LoginPage],
 	},
 ]);
 
