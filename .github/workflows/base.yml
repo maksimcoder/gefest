@@ -31,23 +31,3 @@ jobs:
 
     - name: Build production
       run: npm run build --if-present
-
-on:
-  push:
-    branches: [ "master" ]
-  
-  jobs:
-    deploy:
-
-      runs-on: ubuntu-22.04
-
-      steps:
-      - name: Deploy
-        uses: easingthemes/ssh-deploy@main
-        env:
-            SSH_PRIVATE_KEY: ${{ secrets.SSH_SECRET_KEY }}
-            ARGS: "-rlgoDzvc -i --delete"
-            SOURCE: "build/"
-            REMOTE_HOST: '46.19.67.87'
-            REMOTE_USER: 'root'
-            TARGET: /var/www/html
