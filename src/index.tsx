@@ -7,6 +7,11 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from 'router/router';
 import { store } from 'app/redux';
 
+import '@fontsource/heebo/400.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+
 import './index.css';
 
 const container = document.getElementById('root')!;
