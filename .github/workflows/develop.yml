@@ -1,8 +1,8 @@
-name: CI/CD
+name: CI/CD develop
 
 on:
   pull_request:
-    branches: [ "master" ]
+    branches: [ "develop" ]
 
 jobs:
   build:
