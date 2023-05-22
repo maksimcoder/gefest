@@ -11,13 +11,14 @@ export const loginApi = createApi({
 				url: `session`,
 				method: 'POST',
 				body: data,
-				// credentials: 'include'
+				credentials: 'include',
 			}),
 		}),
 		protected: builder.mutation<void, void>({
 			query: () => ({
 				url: `session/protected`,
 				method: 'POST',
+				credentials: 'include',
 			}),
 		}),
 	}),
