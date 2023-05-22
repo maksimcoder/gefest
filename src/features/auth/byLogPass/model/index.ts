@@ -1,2 +1,2 @@
 export * from './validation';
-export * from './loginForm';
+export * from './useLoginFormModel';
