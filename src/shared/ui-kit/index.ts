@@ -1,3 +1,4 @@
 import { Text } from './Text';
+import { HammerLogo } from './HammerLogo';
 
-export { Text };
+export { Text, HammerLogo };
