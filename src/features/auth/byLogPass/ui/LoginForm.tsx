@@ -13,7 +13,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { ColorPalette, FontNames } from 'shared';
+import { ColorPalette, FontNames, Text } from 'shared';
 
 import {
 	loginValidationSchema,
@@ -91,7 +91,9 @@ export const LoginForm: FC = () => {
 						color={ColorPalette.BLACK_2}>
 						Войти
 					</Button>
-					<Checkbox textColor={ColorPalette.GRAY_4}>Запомнить меня</Checkbox>
+					<Checkbox textColor={ColorPalette.GRAY_4}>
+						<Text>Запомнить меня</Text>
+					</Checkbox>
 				</Stack>
 			</Stack>
 		</form>
