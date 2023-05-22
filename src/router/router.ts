@@ -6,6 +6,10 @@ const router = createBrowserRouter([
 		path: ERoutes.LoginPage,
 		element: RoutesComponents[ERoutes.LoginPage],
 	},
+	{
+		path: ERoutes.Candidates,
+		element: RoutesComponents[ERoutes.Candidates],
+	},
 ]);
 
 export { router };
