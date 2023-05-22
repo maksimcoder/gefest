@@ -1,12 +1,12 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { ILoginMutation } from '../types';
+import { LoginMutation } from '../types';
 import { baseQueryWithReauth } from 'shared/api';
 
 export const loginApi = createApi({
 	reducerPath: 'userApi',
 	baseQuery: baseQueryWithReauth,
 	endpoints: (builder) => ({
-		logIn: builder.mutation<null, ILoginMutation>({
+		logIn: builder.mutation<null, LoginMutation>({
 			query: (data) => ({
 				url: `session`,
 				method: 'POST',

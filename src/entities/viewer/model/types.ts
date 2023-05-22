@@ -1,10 +1,8 @@
-export interface ILoginMutation {
-	username: string;
-	password: string;
-}
+import { z } from 'zod';
 
-export interface IPostMutation {
-	title: string;
-	body: string;
-	userId: number;
-}
+const LoginMutationZod = z.object({
+	username: z.string(),
+	password: z.string(),
+});
+
+export type LoginMutation = z.infer<typeof LoginMutationZod>;
