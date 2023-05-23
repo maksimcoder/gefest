@@ -89,6 +89,7 @@ const HammerLogo: FC<IHammerLogoProps> = ({
 		...head,
 		...baseStyles,
 		border,
+		borderRadius: '3px',
 	};
 
 	const handleSx: SystemStyleObject = {

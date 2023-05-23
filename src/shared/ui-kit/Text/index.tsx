@@ -1,12 +1,17 @@
-import { FC } from 'react';
+import { forwardRef } from 'react';
 import { Text as ChakraText, TextProps } from '@chakra-ui/react';
 
 import { FontNames } from 'shared/theme';
 
-export const Text: FC<TextProps> = (props) => {
+export const Text = forwardRef((props: TextProps, ref) => {
 	return (
-		<ChakraText fontFamily={props.fontFamily || FontNames.Roboto}>
+		<ChakraText
+			{...props}
+			ref={ref}
+			fontFamily={props.fontFamily || FontNames.Roboto}>
 			{props.children}
 		</ChakraText>
 	);
-};
+});
+
+Text.displayName = 'Text';
