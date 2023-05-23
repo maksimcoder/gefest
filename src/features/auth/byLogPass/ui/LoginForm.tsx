@@ -8,6 +8,8 @@ import {
 	InputGroup,
 	Checkbox,
 	FormErrorMessage,
+	Tooltip,
+	Box,
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useForm } from 'react-hook-form';
@@ -20,7 +22,14 @@ import {
 	LoginValidationSchema,
 	useLoginFormModel,
 } from '../model';
-import { inputSx, placeholderSx, buttonStackStyles } from './styles';
+import {
+	inputSx,
+	placeholderSx,
+	buttonStackStyles,
+	buttonStylesSx,
+	controlsStackSx,
+	forgotPasswordStyle,
+} from './styles';
 
 const INITIAL_FORM_VALUES: LoginValidationSchema = {
 	username: 'admin',
@@ -29,7 +38,12 @@ const INITIAL_FORM_VALUES: LoginValidationSchema = {
 
 export const LoginForm: FC = () => {
 	const [showPassword, setShowPassword] = useState(false);
-	const { onSubmit } = useLoginFormModel();
+	const [showCheckTooltip, setShowCheckTooltip] = useState(false);
+	const [showPassTooltip, setShowPassTooltip] = useState(false);
+	const {
+		onSubmit,
+		loginMutationData: { isLoading },
+	} = useLoginFormModel();
 	const {
 		register,
 		handleSubmit,
@@ -83,17 +97,47 @@ export const LoginForm: FC = () => {
 						{errors.password?.message}
 					</FormErrorMessage>
 				</FormControl>
-				<Stack style={buttonStackStyles}>
+				<Stack
+					className='login-form__controls controls'
+					style={buttonStackStyles}>
 					<Button
+						sx={buttonStylesSx}
 						type='submit'
 						variant='solid'
+						isLoading={isLoading}
+						loadingText='Выполняется вход'
 						bg={ColorPalette.GRAY_3}
 						color={ColorPalette.BLACK_2}>
 						Войти
 					</Button>
-					<Checkbox textColor={ColorPalette.GRAY_4}>
-						<Text>Запомнить меня</Text>
-					</Checkbox>
+					<Stack sx={controlsStackSx}>
+						<Tooltip
+							placement='top'
+							isOpen={showCheckTooltip}
+							label='version 2.0'>
+							<Box className='controls__tooltip-box'>
+								<Checkbox
+									isDisabled
+									onMouseEnter={() => setShowCheckTooltip(true)}
+									onMouseLeave={() => setShowCheckTooltip(false)}
+									textColor={ColorPalette.GRAY_4}>
+									<Text>Запомнить меня</Text>
+								</Checkbox>
+							</Box>
+						</Tooltip>
+						<Tooltip
+							placement='top'
+							isOpen={showPassTooltip}
+							label='version 2.0'>
+							<Text
+								onMouseEnter={() => setShowPassTooltip(true)}
+								onMouseLeave={() => setShowPassTooltip(false)}
+								style={forgotPasswordStyle}
+								color={ColorPalette.WHITE}>
+								Забыли пароль
+							</Text>
+						</Tooltip>
+					</Stack>
 				</Stack>
 			</Stack>
 		</form>

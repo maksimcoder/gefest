@@ -15,5 +15,19 @@ export const inputSx: SystemStyleObject = {
 export const buttonStackStyles: CSSProperties = {
 	gap: '10px',
 	marginTop: '20px',
+};
+
+export const buttonStylesSx: SystemStyleObject = {
 	borderRadius: 'none',
+};
+
+export const controlsStackSx: SystemStyleObject = {
+	flexDirection: 'row',
+	justifyContent: 'space-between',
+};
+
+export const forgotPasswordStyle: CSSProperties = {
+	marginTop: 0,
+	cursor: 'not-allowed',
+	opacity: '0.4',
 };
