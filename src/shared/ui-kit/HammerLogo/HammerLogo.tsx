@@ -7,6 +7,7 @@ interface IHammerLogoProps {
 	rotate?: number;
 	color?: string;
 	size?: HammerSize;
+	sx?: SystemStyleObject;
 }
 
 interface IHammerSizes {
@@ -28,6 +29,7 @@ const HammerLogo: FC<IHammerLogoProps> = ({
 	color = 'white',
 	size = 'large',
 	rotate = 0,
+	sx,
 }) => {
 	function defineHammerSize(size: HammerSize): IHammerSizes {
 		switch (size) {
@@ -101,7 +103,7 @@ const HammerLogo: FC<IHammerLogoProps> = ({
 	};
 
 	return (
-		<Box sx={boxSx} className='Hammer'>
+		<Box sx={{ ...boxSx, ...sx }} className='Hammer'>
 			<Box className='Hammer__head' sx={headSx} />
 			<Box className='Hammer_handle' sx={handleSx} />
 		</Box>
