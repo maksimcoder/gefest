@@ -1,7 +1,7 @@
 import { Box, SystemStyleObject } from '@chakra-ui/react';
 import { FC } from 'react';
 
-type HammerSize = 'small' | 'medium' | 'large';
+type HammerSize = 'small' | 'semiSmall' | 'medium' | 'large';
 
 interface IHammerLogoProps {
 	rotate?: number;
@@ -45,6 +45,12 @@ const HammerLogo: FC<IHammerLogoProps> = ({
 					head: { width: '101.81px', height: '52.94px' },
 					handle: { width: '67.88px', height: '21.72px' },
 				};
+			case 'semiSmall':
+				return {
+					main: { width: '56.45px', height: '48.3px' },
+					head: { width: '42.86px', height: '22.29px' },
+					handle: { width: '28.58px', height: '9.14px' },
+				};
 			case 'small':
 				return {
 					main: { width: '34.12px', height: '29.19px' },
@@ -66,6 +72,8 @@ const HammerLogo: FC<IHammerLogoProps> = ({
 				return '30px';
 			case 'medium':
 				return '20px';
+			case 'semiSmall':
+				return '10px';
 			case 'small':
 				return '5px';
 		}
