@@ -1,3 +1,4 @@
 import { useComponentDidMount } from './useComponentDidMount';
+import { useBodyBkgColor } from './useBodyBkgColor';
 
-export { useComponentDidMount };
+export { useBodyBkgColor, useComponentDidMount };
