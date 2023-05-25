@@ -2,13 +2,18 @@ import { useToast } from '@chakra-ui/react';
 import { SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { LoginMutation, useLogInMutation } from 'entities/viewer/model';
+import {
+	LoginMutation,
+	useLazyGetViewerQuery,
+	useLogInMutation,
+} from 'entities/viewer/model';
 import { LoginValidationSchema } from './validation';
 
 export const useLoginFormModel = () => {
 	const toast = useToast();
 	const navigate = useNavigate();
 	const [login, loginMutationData] = useLogInMutation();
+	const [getViewer, { isLoading }] = useLazyGetViewerQuery();
 
 	function showToast(status: 'success' | 'error', serverError?: boolean) {
 		const title = status === 'success' ? 'Успех!' : 'Произошла ошибка',
@@ -31,16 +36,15 @@ export const useLoginFormModel = () => {
 
 	async function handleLogin(data: LoginMutation) {
 		const result = await login(data);
+		const viewer = await getViewer(undefined, false);
 
-		if ('error' in result) {
-			console.log(result.error);
+		if ('error' in result || viewer.error) {
 			showToast('error', true);
 		} else {
 			showToast('success');
 			setTimeout(() => {
 				navigate('/');
 			}, 500);
-			console.log(result);
 		}
 	}
 
@@ -51,5 +55,6 @@ export const useLoginFormModel = () => {
 	return {
 		onSubmit,
 		loginMutationData,
+		isLoading, // ! ДОБАВИТЬ В КНОПКУ ВХОД
 	};
 };

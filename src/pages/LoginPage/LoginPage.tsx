@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Box, Stack, useMediaQuery } from '@chakra-ui/react';
 
-import { ColorPalette, useComponentDidMount, HammerLogo } from 'shared';
+import { ColorPalette, HammerLogo } from 'shared';
+import { useComponentDidMount, useBodyBkgColor } from 'shared/hooks';
 import { LoginWidget } from 'widgets';
 import {
 	brickItemSx,
@@ -16,8 +17,14 @@ import {
 
 const LoginPage: FC = () => {
 	const [smallerSizes] = useMediaQuery('(max-width: 1500px)');
+	const { refreshColorOnUnmount, changeColorOnMount } = useBodyBkgColor(
+		ColorPalette.GRAY_2_09
+	);
 	useComponentDidMount(() => {
-		document.body.style.backgroundColor = ColorPalette.GRAY_2_09;
+		changeColorOnMount();
+		return () => {
+			refreshColorOnUnmount();
+		};
 	});
 
 	return (

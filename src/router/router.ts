@@ -7,8 +7,14 @@ const router = createBrowserRouter([
 		element: RoutesComponents[ERoutes.LoginPage],
 	},
 	{
-		path: ERoutes.Candidates,
-		element: RoutesComponents[ERoutes.Candidates],
+		path: ERoutes.Protected,
+		element: RoutesComponents[ERoutes.Protected],
+		children: [
+			{
+				path: ERoutes.Candidates,
+				element: RoutesComponents[ERoutes.Candidates],
+			},
+		],
 	},
 ]);
 
