@@ -1,6 +1,17 @@
-export const BASE_API_URL = 'https://almax-dev.ru/';
+export const BASE_API_URL = 'https://almax-dev.ru';
 
 export const enum ApiPaths {
-	SESSION = 'session/',
-	PROTECTED = 'protected/',
+	// Auth
+	SESSION = '/session',
+	PROTECTED = '/protected',
+	// Viewer
+	USERS = '/users',
+}
+
+export const enum ApiMethods {
+	GET = 'GET',
+	POST = 'POST',
+	PATCH = 'PATCH',
+	PUT = 'PUT',
+	DELETE = 'DELETE',
 }
