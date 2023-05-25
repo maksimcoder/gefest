@@ -43,6 +43,7 @@ export const LoginForm: FC = () => {
 	const {
 		onSubmit,
 		loginMutationData: { isLoading },
+		isLoading: isUserLoading,
 	} = useLoginFormModel();
 	const {
 		register,
@@ -104,7 +105,7 @@ export const LoginForm: FC = () => {
 						sx={buttonStylesSx}
 						type='submit'
 						variant='solid'
-						isLoading={isLoading}
+						isLoading={isLoading || isUserLoading}
 						loadingText='Выполняется вход'
 						bg={ColorPalette.GRAY_3}
 						color={ColorPalette.BLACK_2}>
