@@ -1,8 +1,9 @@
-import { SystemStyleObject } from '@chakra-ui/react';
 import { CSSProperties } from 'react';
+import { SystemStyleObject } from '@chakra-ui/react';
 import { ColorPalette } from 'shared';
 
 export const smallCandidateCardSx: SystemStyleObject = {
+	position: 'relative',
 	alignItems: 'center',
 	height: '100%',
 	padding: '30px 0',
@@ -29,4 +30,10 @@ export const badgesStackSx: CSSProperties = {
 
 export const cardTextSx: SystemStyleObject = {
 	alignItems: 'center',
+};
+
+export const closeButtonSx: SystemStyleObject = {
+	position: 'absolute',
+	top: '0',
+	right: '10px',
 };

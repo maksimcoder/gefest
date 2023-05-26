@@ -1,12 +1,13 @@
-import { Avatar, Badge, Stack } from '@chakra-ui/react';
+import { Avatar, Badge, Stack, CloseButton } from '@chakra-ui/react';
 import { FC } from 'react';
-import { Text } from 'shared';
+import { ColorPalette, Text } from 'shared';
 import { IconMapPin } from 'shared/icons/candidate/smallCandidate';
 import {
 	avatarBadgeSx,
 	avatarSx,
 	badgesStackSx,
 	cardTextSx,
+	closeButtonSx,
 	smallCandidateCardSx,
 } from './styles';
 import { avatarColors } from '../const';
@@ -61,6 +62,7 @@ export const SmallCandidateCard: FC<ISmallCandidateCardProps> = ({
 				<Badge colorScheme='red'>{salary}</Badge>
 				<Badge colorScheme='telegram'>{experience} лет опыта</Badge>
 			</Stack>
+			<CloseButton color={ColorPalette.GRAY_1} sx={closeButtonSx} />
 		</Stack>
 	);
 };
