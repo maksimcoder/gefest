@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { AbsoluteCenter, Center, Spinner } from '@chakra-ui/react';
+import { AbsoluteCenter, Spinner } from '@chakra-ui/react';
 import { useNavigate, Outlet, useLocation, NavigateOptions } from 'react-router-dom';
 
 import { EAuthRoutes } from 'router/routes';
