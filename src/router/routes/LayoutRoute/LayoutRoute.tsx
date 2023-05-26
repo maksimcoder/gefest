@@ -1,6 +1,6 @@
-import { Stack } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
-import { Navbar } from 'shared/ui/layout';
+import { Stack } from '@chakra-ui/react';
+import { Navbar } from 'widgets';
 
 interface ILayoutRouteProps {
 	children: ReactNode;
