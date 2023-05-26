@@ -1,4 +1,4 @@
-import { useToast, ToastProps, UseToastOptions } from '@chakra-ui/react';
+import { useToast } from '@chakra-ui/react';
 import { SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
