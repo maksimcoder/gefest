@@ -7,7 +7,7 @@ import {
 
 import { logoutThunk } from 'entities/viewer/model';
 
-import { BASE_API_URL, ApiPaths } from './types';
+import { BASE_API_URL, ApiPaths, ApiConstNames } from './types';
 
 const baseQuery = fetchBaseQuery({ baseUrl: BASE_API_URL });
 
@@ -31,6 +31,16 @@ export const baseQueryWithReauth: BaseQueryFn<
 	FetchBaseQueryError
 > = async (args, api, extraOptions) => {
 	let result = await baseQuery(addCredentialsToArgs(args), api, extraOptions);
+
+	if (result.error) {
+		const { error } = result.error.data as { error: string };
+		if (error === 'invalid_token') {
+			localStorage.removeItem(ApiConstNames.USER);
+			window.location.reload();
+			return result;
+		}
+	}
+
 	if (result.error && result.error.status === 401) {
 		const refreshResult = await baseQuery(
 			{ url: ApiPaths.SESSION, method: 'PATCH', credentials: 'include' },
@@ -42,6 +52,7 @@ export const baseQueryWithReauth: BaseQueryFn<
 			result = await baseQuery(addCredentialsToArgs(args), api, extraOptions);
 		} else {
 			api.dispatch(logoutThunk());
+			localStorage.removeItem(ApiConstNames.USER);
 			const error: FetchBaseQueryError = {
 				status: 500,
 				data: null,

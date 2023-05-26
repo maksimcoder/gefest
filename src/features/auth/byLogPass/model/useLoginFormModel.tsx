@@ -8,10 +8,13 @@ import {
 	useLogInMutation,
 } from 'entities/viewer/model';
 import { LoginValidationSchema } from './validation';
+import { useLocalStorage } from 'shared/services';
+import { ApiConstNames } from 'shared/api';
 
 export const useLoginFormModel = () => {
 	const toast = useToast();
 	const navigate = useNavigate();
+	const { setItem } = useLocalStorage();
 	const [login, loginMutationData] = useLogInMutation();
 	const [getViewer, { isLoading }] = useLazyGetViewerQuery();
 
@@ -42,6 +45,7 @@ export const useLoginFormModel = () => {
 			showToast('error', true);
 		} else {
 			showToast('success');
+			setItem(ApiConstNames.USER, 'exists');
 			setTimeout(() => {
 				navigate('/');
 			}, 500);
@@ -55,6 +59,6 @@ export const useLoginFormModel = () => {
 	return {
 		onSubmit,
 		loginMutationData,
-		isLoading, // ! ДОБАВИТЬ В КНОПКУ ВХОД
+		isLoading,
 	};
 };

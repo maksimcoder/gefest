@@ -4,34 +4,28 @@ import { useNavigate, Outlet, useLocation, NavigateOptions } from 'react-router-
 
 import { EAuthRoutes } from 'router/routes';
 import { useGetViewerQuery } from 'entities/viewer/model';
-import { useBodyBkgColor, useComponentDidMount } from 'shared/hooks';
+import { useComponentDidMount } from 'shared/hooks';
 import { ColorPalette } from 'shared';
+import { useLocalStorage } from 'shared/services';
+import { ApiConstNames } from 'shared/api';
 
 export const ProtectedRoute: FC = () => {
 	const { data: viewer, isLoading } = useGetViewerQuery();
-	const { refreshColorOnUnmount, changeColorOnMount } = useBodyBkgColor(
-		ColorPalette.GRAY_2_09
-	);
+	const { getItem } = useLocalStorage();
 	const navigate = useNavigate();
 	const location = useLocation();
-
-	useComponentDidMount(() => {
-		changeColorOnMount();
-		return () => {
-			refreshColorOnUnmount();
-		};
-	});
-
 	const navigateOptions: NavigateOptions = {
 		replace: true,
 		state: { from: location },
 	};
 
-	if (!viewer && !isLoading) {
-		navigate(EAuthRoutes.LoginPage, navigateOptions);
-	}
+	useComponentDidMount(() => {
+		if (!getItem(ApiConstNames.USER)) {
+			navigate(EAuthRoutes.LoginPage, navigateOptions);
+		}
+	});
 
-	if (isLoading && !viewer) {
+	if (!viewer && isLoading) {
 		return (
 			<AbsoluteCenter>
 				<Spinner

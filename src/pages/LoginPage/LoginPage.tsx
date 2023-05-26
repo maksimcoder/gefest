@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Box, Stack, useMediaQuery } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 import { ColorPalette, HammerLogo } from 'shared';
 import { useComponentDidMount, useBodyBkgColor } from 'shared/hooks';
@@ -14,13 +15,22 @@ import {
 	hammerWhiteMediumSx,
 	loginPageSx,
 } from './styles';
+import { EClientRoutes } from 'router/routes';
+import { ApiConstNames } from 'shared/api';
+import { useLocalStorage } from 'shared/services';
 
 const LoginPage: FC = () => {
+	const { getItem } = useLocalStorage();
+	const navigate = useNavigate();
 	const [smallerSizes] = useMediaQuery('(max-width: 1500px)');
 	const { refreshColorOnUnmount, changeColorOnMount } = useBodyBkgColor(
 		ColorPalette.GRAY_2_09
 	);
+
 	useComponentDidMount(() => {
+		if (getItem(ApiConstNames.USER))
+			navigate(EClientRoutes.Candidates, { replace: true });
+
 		changeColorOnMount();
 		return () => {
 			refreshColorOnUnmount();

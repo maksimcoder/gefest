@@ -15,3 +15,7 @@ export const enum ApiMethods {
 	PUT = 'PUT',
 	DELETE = 'DELETE',
 }
+
+export const enum ApiConstNames {
+	USER = 'user',
+}

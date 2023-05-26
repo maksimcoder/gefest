@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Stack } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { Navbar } from 'widgets';
 
 interface ILayoutRouteProps {
@@ -8,9 +8,9 @@ interface ILayoutRouteProps {
 
 export const LayoutRoute: FC<ILayoutRouteProps> = ({ children }) => {
 	return (
-		<Stack height='100%' className='layout' direction='row'>
+		<Flex gap='60px' height='100%' className='layout' direction='row'>
 			<Navbar />
 			{children}
-		</Stack>
+		</Flex>
 	);
 };
