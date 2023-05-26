@@ -1,5 +1,6 @@
 export const enum ColorPalette {
 	WHITE = 'rgba(255, 255, 255, 1)',
+	WHITE_07 = 'rgba(255, 255, 255, 0.7)',
 	BLACK_1 = 'rgba(21, 21, 21, 1)',
 	BLACK_2 = 'rgba(45, 55, 72, 1)',
 	GRAY_1 = 'rgba(204, 217, 224, 1)',
@@ -10,9 +11,13 @@ export const enum ColorPalette {
 	GRAY_4 = 'rgba(226, 232, 240, 1)',
 	GRAY_5 = 'rgba(217, 217, 217, 1)',
 	GRAY_6 = 'rgba(245, 245, 245, 1)',
+	ORANGE_2 = 'rgba(224, 218, 204, 1)',
 	PINK_1 = 'rgba(255, 75, 95, 1)',
+	PINK_3 = 'rgba(221, 204, 224, 1)',
 	BLUE_1 = 'rgba(0, 55, 145, 1)',
 	BLUE_2 = 'rgba(141, 167, 209, 1)',
 	BLUE_2_05 = 'rgba(141, 167, 209, 0.5)',
+	BLUE_2_02 = 'rgba(141, 167, 209, 0.2)',
 	BLUE_2_03 = 'rgba(141, 167, 209, 0.3)',
+	TURQUOISE_2 = 'rgba(204, 224, 220, 1)',
 }
