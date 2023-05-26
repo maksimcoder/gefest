@@ -31,13 +31,19 @@ export const baseQueryWithReauth: BaseQueryFn<
 	FetchBaseQueryError
 > = async (args, api, extraOptions) => {
 	let result = await baseQuery(addCredentialsToArgs(args), api, extraOptions);
-
+	console.log(result);
 	if (result.error) {
-		const { error } = result.error.data as { error: string };
-		if (error === 'invalid_token') {
+		if (result.error.status === 500) {
 			localStorage.removeItem(ApiConstNames.USER);
 			window.location.reload();
 			return result;
+		} else {
+			const { error } = result.error.data as { error: string };
+			if (error === 'invalid_token') {
+				localStorage.removeItem(ApiConstNames.USER);
+				window.location.reload();
+				return result;
+			}
 		}
 	}
 

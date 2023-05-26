@@ -18,6 +18,10 @@ export const authApi = createApi({
 				url: ApiPaths.SESSION,
 				method: ApiMethods.DELETE,
 			}),
+			// transformResponse: () => {
+			// 	localStorage.removeItem(ApiConstNames.USER);
+			// 	return null;
+			// }
 		}),
 		protected: builder.mutation<void, void>({
 			query: () => ({
@@ -28,4 +32,4 @@ export const authApi = createApi({
 	}),
 });
 
-export const { useLogInMutation, useProtectedMutation } = authApi;
+export const { useLogInMutation, useLogOutMutation, useProtectedMutation } = authApi;

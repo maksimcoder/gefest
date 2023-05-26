@@ -6,6 +6,7 @@ export const enum ApiPaths {
 	PROTECTED = '/protected',
 	// Viewer
 	USERS = '/users',
+	CURRENT = '/current',
 }
 
 export const enum ApiMethods {

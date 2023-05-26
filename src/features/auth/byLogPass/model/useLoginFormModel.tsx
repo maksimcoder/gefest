@@ -1,4 +1,4 @@
-import { useToast } from '@chakra-ui/react';
+import { useToast, ToastProps, UseToastOptions } from '@chakra-ui/react';
 import { SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ import {
 import { LoginValidationSchema } from './validation';
 import { useLocalStorage } from 'shared/services';
 import { ApiConstNames } from 'shared/api';
+import { EClientRoutes } from 'router/routes';
 
 export const useLoginFormModel = () => {
 	const toast = useToast();
@@ -47,7 +48,7 @@ export const useLoginFormModel = () => {
 			showToast('success');
 			setItem(ApiConstNames.USER, 'exists');
 			setTimeout(() => {
-				navigate('/');
+				navigate(EClientRoutes.Candidates);
 			}, 500);
 		}
 	}
