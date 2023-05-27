@@ -1,6 +1,7 @@
-import { Stack } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
-import { Navbar } from 'shared/ui/layout';
+import { Flex } from '@chakra-ui/react';
+import { Navbar } from 'widgets';
+import { ProfileWidget } from 'widgets/auth/';
 
 interface ILayoutRouteProps {
 	children: ReactNode;
@@ -8,9 +9,10 @@ interface ILayoutRouteProps {
 
 export const LayoutRoute: FC<ILayoutRouteProps> = ({ children }) => {
 	return (
-		<Stack height='100%' className='layout' direction='row'>
+		<Flex gap='60px' height='100%' className='layout' direction='row'>
 			<Navbar />
+			<ProfileWidget />
 			{children}
-		</Stack>
+		</Flex>
 	);
 };

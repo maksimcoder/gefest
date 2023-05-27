@@ -8,9 +8,8 @@ export const viewerApi = createApi({
 	endpoints: (builder) => ({
 		getViewer: builder.query<ApiViewer, void>({
 			query: () => ({
-				url: ApiPaths.USERS,
+				url: `${ApiPaths.USERS}${ApiPaths.CURRENT}`,
 				method: ApiMethods.GET,
-				// credentials: 'include'
 			}),
 		}),
 	}),
