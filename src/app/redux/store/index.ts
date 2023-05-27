@@ -3,7 +3,6 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query/react';
 import { ViewerModel } from 'entities/viewer';
 import { refsApi } from 'entities/refs';
 import { companyApi } from 'entities/company';
-import { singleCandidateApi } from 'entities/candidate';
 import { candidatesApi } from 'features/candidates';
 
 const { authApi, viewerApi } = ViewerModel;
@@ -14,7 +13,6 @@ export const store = configureStore({
 		[viewerApi.reducerPath]: viewerApi.reducer,
 		[refsApi.reducerPath]: refsApi.reducer,
 		[companyApi.reducerPath]: companyApi.reducer,
-		[singleCandidateApi.reducerPath]: singleCandidateApi.reducer,
 		[candidatesApi.reducerPath]: candidatesApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) => {
@@ -23,7 +21,6 @@ export const store = configureStore({
 			viewerApi.middleware,
 			refsApi.middleware,
 			companyApi.middleware,
-			singleCandidateApi.middleware,
 			candidatesApi.middleware
 		);
 	},
