@@ -14,6 +14,7 @@ export const buttonStyle: SystemStyleObject = {
 };
 
 export const interactiveRow: SystemStyleObject = {
+	height: '68px',
 	paddingRight: '10vw',
 };
 

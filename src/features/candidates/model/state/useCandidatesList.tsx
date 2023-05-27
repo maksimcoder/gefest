@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { GridItem, useToast } from '@chakra-ui/react';
 
-import { PageContext } from 'features/context';
+import { CandidatesPageContext } from 'features/context';
 import {
 	useGetCandidateslistQuery,
 	useDeleteSingleCandidateMutation,
@@ -17,9 +17,11 @@ export const useCandidatesList = () => {
 		position: 'bottom-right',
 		isClosable: true,
 	});
-	const { filters } = useContext(PageContext);
-	const { data, isLoading, isFetching, isSuccess, isError } =
-		useGetCandidateslistQuery(filters);
+	const { filters } = useContext(CandidatesPageContext);
+	console.log(filters);
+	const { data, isLoading, isFetching, isSuccess, isError } = useGetCandidateslistQuery(
+		filters || {}
+	);
 	const [deleteCandidate, { isError: isDeleteError, isLoading: isDeleteLoading }] =
 		useDeleteSingleCandidateMutation();
 

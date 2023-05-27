@@ -1,20 +1,12 @@
 import { ChangeEvent, MouseEvent, FC } from 'react';
-import {
-	Stack,
-	Flex,
-	InputGroup,
-	InputLeftElement,
-	Input,
-	Button,
-	Divider,
-	Box,
-	useMediaQuery,
-} from '@chakra-ui/react';
-import { SearchIcon, AddIcon } from '@chakra-ui/icons';
+import { Stack, Flex, Button, Divider, Box, useMediaQuery } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons';
 
 import { clientRouteValues, EClientRouteKeys } from 'router/routes';
-import { Text, PageTitle, ColorPalette, FontNames } from 'shared';
+import { Text, PageTitle, ColorPalette } from 'shared';
 import { pageHeaderSx, interactiveRow, buttonStyle, dividerSx } from './styles';
+
+import { SearchFio } from 'features/search/FIO';
 
 interface IPageHeaderProps {
 	pageTitleKey: EClientRouteKeys;
@@ -28,31 +20,16 @@ interface IPageHeaderProps {
 export const PageHeader: FC<IPageHeaderProps> = ({
 	pageTitleKey,
 	buttonValue,
-	inputValue,
 	onButtonClick,
-	onInputChange,
 	peopleFound,
 }) => {
 	const [smallerSizes] = useMediaQuery('(max-width: 1500px)');
+
 	return (
 		<Stack sx={pageHeaderSx(smallerSizes)} as='header' className='page-header'>
 			<PageTitle>{clientRouteValues[pageTitleKey]}</PageTitle>
 			<Flex sx={interactiveRow} justifyContent='space-between'>
-				<InputGroup maxWidth='612px'>
-					<InputLeftElement top='3px' pointerEvents='none'>
-						<SearchIcon boxSize='20px' color={ColorPalette.PINK_1} />
-					</InputLeftElement>
-					<Input
-						onChange={onInputChange}
-						value={inputValue || ''}
-						fontFamily={FontNames.Roboto}
-						bg={ColorPalette.WHITE}
-						size='lg'
-						variant='outline'
-						type='tel'
-						placeholder='Поиск'
-					/>
-				</InputGroup>
+				<SearchFio />
 				<Button
 					sx={buttonStyle}
 					onClick={onButtonClick}
@@ -63,7 +40,7 @@ export const PageHeader: FC<IPageHeaderProps> = ({
 				</Button>
 			</Flex>
 			<Text
-				visibility={peopleFound ? 'visible' : 'hidden'}
+				visibility={!peopleFound ? 'visible' : 'hidden'}
 				fontWeight={300}
 				fontSize='18px'
 				color={ColorPalette.GRAY_2}>

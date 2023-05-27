@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import { Grid, SystemStyleObject } from '@chakra-ui/react';
+import { Center, Grid, Spinner, SystemStyleObject } from '@chakra-ui/react';
 
 import { useCandidatesList } from '../model';
+import { ColorPalette } from 'shared';
 
 export const CandidatesList: FC = () => {
-	const { candidatesListElements } = useCandidatesList();
-
+	const { candidatesListElements, isFetching, isLoading } = useCandidatesList();
+	const loading = isLoading || isFetching;
 	const candidatesGridSx: SystemStyleObject = {
 		paddingRight: '5vw',
 		gridTemplateColumns: `repeat(auto-fit, minmax(470px, 1fr))`,
@@ -16,9 +17,22 @@ export const CandidatesList: FC = () => {
 		gap: '20px',
 	};
 
+	const spinnerElem = (
+		<Center>
+			<Spinner
+				thickness='4px'
+				speed='0.65s'
+				emptyColor='gray.400'
+				color={ColorPalette.PINK_1}
+				width='80px'
+				height='80px'
+			/>
+		</Center>
+	);
+
 	return (
 		<Grid sx={candidatesGridSx} className='candidates-page__candidates'>
-			{candidatesListElements}
+			{loading ? spinnerElem : candidatesListElements}
 		</Grid>
 	);
 };

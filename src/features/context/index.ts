@@ -1,3 +1,3 @@
-import { PageContext } from './PageContext/PageContext';
+import { CandidatesPageContext } from './CandidatesPageContext/CandidatesPageContext';
 
-export { PageContext };
+export { CandidatesPageContext };

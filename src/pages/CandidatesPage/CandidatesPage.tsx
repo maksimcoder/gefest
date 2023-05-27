@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
-import { PageContext } from 'features/context';
+import { CandidatesPageContext } from 'features/context';
 
 import { ColorPalette } from 'shared';
 import { useComponentDidMount, useBodyBkgColor } from 'shared/hooks';
@@ -8,10 +8,11 @@ import { EClientRouteKeys } from 'router/routes';
 import { candidatesPageSx } from './styles';
 import { PageHeader } from 'widgets';
 import { DataOperations } from 'widgets/DataOperations/DataOperations';
-import { initialPageContext } from 'features/context/PageContext/PageContext';
 import { CandidatesList } from 'features/candidates';
+import { useContextFilters } from './useContextFilters';
 
 const CandidatesPage: FC = () => {
+	const { filters, updateFilters } = useContextFilters();
 	const { refreshColorOnUnmount, changeColorOnMount } = useBodyBkgColor(
 		ColorPalette.GRAY_6
 	);
@@ -25,7 +26,11 @@ const CandidatesPage: FC = () => {
 
 	return (
 		<Box sx={candidatesPageSx} className='page candidates-page' as='main'>
-			<PageContext.Provider value={initialPageContext}>
+			<CandidatesPageContext.Provider
+				value={{
+					filters,
+					updateFilters,
+				}}>
 				<PageHeader
 					pageTitleKey={EClientRouteKeys.Candidates}
 					buttonValue='Добавить кандидата'
@@ -38,7 +43,7 @@ const CandidatesPage: FC = () => {
 					</DataOperations.Filters>
 				</DataOperations>
 				<CandidatesList />
-			</PageContext.Provider>
+			</CandidatesPageContext.Provider>
 		</Box>
 	);
 };
