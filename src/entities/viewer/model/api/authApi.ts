@@ -18,10 +18,6 @@ export const authApi = createApi({
 				url: ApiPaths.SESSION,
 				method: ApiMethods.DELETE,
 			}),
-			// transformResponse: () => {
-			// 	localStorage.removeItem(ApiConstNames.USER);
-			// 	return null;
-			// }
 		}),
 		protected: builder.mutation<void, void>({
 			query: () => ({
