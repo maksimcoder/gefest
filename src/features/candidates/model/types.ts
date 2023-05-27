@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ApiCandidateZod } from 'entities/candidate';
 
 const GetCandidatesListParamsZod = z.object({
 	first_name: z.string().optional(),
@@ -9,3 +10,10 @@ const GetCandidatesListParamsZod = z.object({
 });
 
 export type GetCandidatesListParamsZod = z.infer<typeof GetCandidatesListParamsZod>;
+
+const ApiCandidateListResponseZod = z.object({
+	candidates: ApiCandidateZod,
+	count: z.number(),
+});
+
+export type ApiCandidateListResponse = z.infer<typeof ApiCandidateListResponseZod>;

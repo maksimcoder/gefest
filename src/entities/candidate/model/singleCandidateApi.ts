@@ -6,6 +6,7 @@ export const singleCandidateApi = createApi({
 	reducerPath: 'singleCandidateApi',
 	baseQuery: baseQueryWithReauth,
 	endpoints: (builder) => ({
+		// сюда добавится id
 		getCandidate: builder.query<ApiCandidate, void>({
 			query: (data) => ({
 				url: ApiPaths.SESSION,

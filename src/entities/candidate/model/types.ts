@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { DictionaryItemZod } from 'shared';
 import { CompanyItemZod } from 'entities/company';
 
-const ApiCandidateZod = z.object({
+export const ApiCandidateZod = z.object({
 	id: z.string(),
 	first_name: z.string(),
 	last_name: z.string(),

@@ -7,8 +7,11 @@ import { useComponentDidMount, useBodyBkgColor } from 'shared/hooks';
 import { EClientRouteKeys } from 'router/routes';
 import { candidatesGridSx, candidatesPageSx } from './styles';
 import { PageHeader } from 'widgets';
+import { DataOperations } from 'widgets/DataOperations/DataOperations';
+import { useGetCandidateslistQuery } from 'features/candidates';
 
 const CandidatesPage: FC = () => {
+	const { data } = useGetCandidateslistQuery({});
 	const { refreshColorOnUnmount, changeColorOnMount } = useBodyBkgColor(
 		ColorPalette.GRAY_6
 	);
@@ -20,12 +23,21 @@ const CandidatesPage: FC = () => {
 		};
 	});
 
+	console.log(data);
+
 	return (
 		<Box sx={candidatesPageSx} className='page candidates-page' as='main'>
 			<PageHeader
 				pageTitleKey={EClientRouteKeys.Candidates}
 				buttonValue='Добавить кандидата'
 			/>
+			<DataOperations>
+				<DataOperations.Filters>
+					<Box>Filter 1</Box>
+					<Box>Filter 2</Box>
+					<Box>Filter 3</Box>
+				</DataOperations.Filters>
+			</DataOperations>
 			<Grid sx={candidatesGridSx} className='candidates-page__candidates'>
 				<GridItem w='100%'>
 					<SmallCandidateCard
