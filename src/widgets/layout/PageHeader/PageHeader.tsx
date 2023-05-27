@@ -8,6 +8,7 @@ import {
 	Button,
 	Divider,
 	Box,
+	useMediaQuery,
 } from '@chakra-ui/react';
 import { SearchIcon, AddIcon } from '@chakra-ui/icons';
 
@@ -32,8 +33,9 @@ export const PageHeader: FC<IPageHeaderProps> = ({
 	onInputChange,
 	peopleFound,
 }) => {
+	const [smallerSizes] = useMediaQuery('(max-width: 1500px)');
 	return (
-		<Stack sx={pageHeaderSx} as='header' className='page-header'>
+		<Stack sx={pageHeaderSx(smallerSizes)} as='header' className='page-header'>
 			<PageTitle>{clientRouteValues[pageTitleKey]}</PageTitle>
 			<Flex sx={interactiveRow} justifyContent='space-between'>
 				<InputGroup maxWidth='612px'>

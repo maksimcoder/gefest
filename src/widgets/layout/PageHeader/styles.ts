@@ -1,8 +1,10 @@
 import { SystemStyleObject } from '@chakra-ui/react';
 import { ColorPalette } from 'shared';
 
-export const pageHeaderSx: SystemStyleObject = {
-	padding: '60px 0 30px',
+export const pageHeaderSx = (smallerSizes?: boolean): SystemStyleObject => {
+	return {
+		padding: `${smallerSizes ? '30px' : '60px'} 0 30px`,
+	};
 };
 
 export const buttonStyle: SystemStyleObject = {

@@ -7,6 +7,7 @@ import {
 	Spinner,
 	SystemStyleObject,
 	Flex,
+	useMediaQuery,
 } from '@chakra-ui/react';
 
 import { useGetViewerQuery } from 'entities/viewer/model';
@@ -15,6 +16,7 @@ import { IconLogOut } from 'shared/icons/profile';
 import { useLogOut } from 'features/logOut';
 
 const ProfileWidget: FC = () => {
+	const [smallerSizes] = useMediaQuery('(max-width: 1500px)');
 	const { data: viewer, isLoading, isFetching } = useGetViewerQuery();
 	const { logoutUser, isLoading: isLogoutLoading } = useLogOut();
 
@@ -35,7 +37,7 @@ const ProfileWidget: FC = () => {
 
 	const profileSx: SystemStyleObject = {
 		position: 'absolute',
-		top: '30px',
+		top: smallerSizes ? '15px' : '30px',
 		right: '40px',
 	};
 
