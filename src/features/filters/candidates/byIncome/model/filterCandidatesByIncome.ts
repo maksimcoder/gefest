@@ -19,8 +19,6 @@ export const useFilterCandidatesByIncome = () => {
 	}
 
 	useEffect(() => {
-		console.log('salaryFrom', salaryFrom);
-		console.log('salaryTo', salaryTo);
 		updateFilters?.({
 			salary_from: salaryFrom,
 			salary_to: salaryTo,
