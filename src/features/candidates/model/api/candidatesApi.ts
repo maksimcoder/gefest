@@ -20,11 +20,10 @@ export const candidatesApi = createApi({
 			}),
 			providesTags: ['CandidatesList'],
 		}),
-		getSingleCandidate: builder.query<ApiCandidate, void>({
-			query: (data) => ({
-				url: ApiPaths.SESSION,
+		getSingleCandidate: builder.query<ApiCandidate, number>({
+			query: (id) => ({
+				url: `${ApiPaths.CANDIDATES}/${id}`,
 				method: ApiMethods.GET,
-				body: data,
 			}),
 		}),
 		deleteSingleCandidate: builder.mutation<void, string>({

@@ -24,7 +24,7 @@ interface ISmallVacancyProps {
 	department?: string;
 	priority?: string;
 	isUndeletable?: boolean;
-	onCrossClick?: (id?: string) => void;
+	onCrossClick?: (id: string) => void;
 }
 
 export const SmallVacancyCard: FC<ISmallVacancyProps> = ({
@@ -76,7 +76,7 @@ export const SmallVacancyCard: FC<ISmallVacancyProps> = ({
 							color={ColorPalette.BLACK_1_03}
 							fontSize='16px'
 							fontWeight={300}>
-							Закрыть до {deadLine}
+							Закрыть до {new Date(deadLine).toLocaleDateString()}
 						</Text>
 					)}
 					{title && (

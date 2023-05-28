@@ -4,6 +4,7 @@ import { ViewerModel } from 'entities/viewer';
 import { refsApi } from 'entities/refs';
 import { companyApi } from 'entities/company';
 import { candidatesApi } from 'features/candidates';
+import { vacanciesApi } from 'entities/vacancy';
 
 const { authApi, viewerApi } = ViewerModel;
 
@@ -14,6 +15,7 @@ export const store = configureStore({
 		[refsApi.reducerPath]: refsApi.reducer,
 		[companyApi.reducerPath]: companyApi.reducer,
 		[candidatesApi.reducerPath]: candidatesApi.reducer,
+		[vacanciesApi.reducerPath]: vacanciesApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) => {
 		return getDefaultMiddleware().concat(
@@ -21,7 +23,8 @@ export const store = configureStore({
 			viewerApi.middleware,
 			refsApi.middleware,
 			companyApi.middleware,
-			candidatesApi.middleware
+			candidatesApi.middleware,
+			vacanciesApi.middleware
 		);
 	},
 });

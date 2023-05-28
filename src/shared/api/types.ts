@@ -2,7 +2,7 @@ export const BASE_API_URL = 'https://almax-dev.ru';
 
 export const enum ApiPaths {
 	// Auth
-	SESSION = '/session',
+	SESSION = '/sessions',
 	PROTECTED = '/protected',
 	// Users
 	USERS = '/users',
@@ -11,6 +11,8 @@ export const enum ApiPaths {
 	REFS = '/refs',
 	// Candidates
 	CANDIDATES = '/candidates',
+	// vacancies
+	VACANCIES = '/vacancies',
 	// Company
 	DEPARTMENTS = '/departments',
 	POSITIONS = '/positions',
@@ -20,7 +22,7 @@ export const enum ApiPaths {
 export const enum ApiRefPaths {
 	ROLES = '/roles',
 	VACANCY_PRIORITIES = '/vacancy-priorities',
-	ADDRESSES = '/adresses',
+	ADDRESSES = '/addresses',
 	COUNTRIES = '/countries',
 	FAMILY_STATS = '/family-stats',
 	CONTACT_TYPES = '/contact-types',
