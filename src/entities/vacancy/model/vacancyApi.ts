@@ -73,6 +73,14 @@ export const vacanciesApi = createApi({
 			}),
 			invalidatesTags: ['VacanciesList'],
 		}),
+		postSingleVacancy: builder.mutation<void, IPostVacancy>({
+			query: (body) => ({
+				url: `${ApiPaths.VACANCIES}`,
+				method: ApiMethods.POST,
+				body,
+			}),
+			invalidatesTags: ['VacanciesList'],
+		}),
 	}),
 });
 

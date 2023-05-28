@@ -17,7 +17,6 @@ import {
 	DrawerFooter,
 	Button,
 } from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
 import { infoBlockSx, inputSx } from './styles';
 import { ColorPalette, Text } from 'shared';
 import { Input } from './components';
