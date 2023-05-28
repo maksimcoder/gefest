@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Box, Fade, useBoolean, useDisclosure } from '@chakra-ui/react';
+import { Box, Fade, useBoolean } from '@chakra-ui/react';
 import { CandidatesPageContext } from 'features/context';
 
 import { ColorPalette } from 'shared';
