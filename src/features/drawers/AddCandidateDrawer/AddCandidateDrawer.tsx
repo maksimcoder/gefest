@@ -28,7 +28,6 @@ interface IDrawerProps {
 
 // * Из-за нехватки времени, этот компонент был сделан не так, как должен был - прошу это учитывать
 export const AddCandidateDrawer: FC<IDrawerProps> = ({ onClose, isOpen }) => {
-	// const  = useForm();
 	return (
 		<Drawer onClose={onClose} isOpen={isOpen} size='xl'>
 			<DrawerOverlay />

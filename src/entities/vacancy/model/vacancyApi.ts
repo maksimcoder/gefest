@@ -42,7 +42,7 @@ interface IPostVacancy {
 	deadline: string;
 	adress_code: number;
 	project: string;
-	skills: string[];
+	skills?: string[];
 }
 
 export const vacanciesApi = createApi({
@@ -88,4 +88,5 @@ export const {
 	useGetVacancieslistQuery,
 	useGetSingleVacancyQuery,
 	useDeleteSingleVacancyMutation,
+	usePostSingleVacancyMutation,
 } = vacanciesApi;

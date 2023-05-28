@@ -1,6 +1,14 @@
 import { FC, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Box, IconButton, Stack, useBoolean, Fade } from '@chakra-ui/react';
+import {
+	Box,
+	IconButton,
+	Stack,
+	useBoolean,
+	Fade,
+	Avatar,
+	Center,
+} from '@chakra-ui/react';
 import { ArrowRightIcon, ArrowLeftIcon } from '@chakra-ui/icons';
 
 import { clientRouteValues, EClientRouteKeys, navigationRoutes } from 'router/routes';
@@ -10,6 +18,7 @@ import { IconCandidates, IconVacancies } from 'shared/icons/navigation';
 
 import { navbarBtnSx, navbarContentSx, navbarSx, navLinkSx } from './styles';
 import { ColorPalette } from 'shared/types';
+import { HH } from 'shared/icons/integrations/hh/hh';
 
 export const Navbar: FC = () => {
 	const [isOpen, setOpen] = useBoolean();
@@ -50,6 +59,9 @@ export const Navbar: FC = () => {
 					{navigationLinks}
 				</Stack>
 				<Stack alignItems='flex-start'>
+					<Box ml='5px' marginBottom='15px'>
+						<HH />
+					</Box>
 					<IconButton
 						sx={navbarBtnSx}
 						backgroundColor={ColorPalette.BLUE_2_03}

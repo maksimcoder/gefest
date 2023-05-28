@@ -26,6 +26,7 @@ import {
 } from 'entities/company';
 import { useGetAddressesRefQuery } from 'entities/refs';
 import { useComponentDidMount } from 'shared/hooks';
+import { usePostSingleVacancyMutation } from 'entities/vacancy';
 
 interface IDrawerProps {
 	onClose: () => void;
@@ -116,6 +117,7 @@ export const AddVacancyDrawer: FC<IDrawerProps> = ({ onClose, isOpen }) => {
 	const { data: positions } = useGetCompanyPositionsQuery();
 	const { data: departments } = useGetCompanyDepartmentsQuery();
 	const { data: grades } = useGetCompanyGradesQuery();
+	const [postVacancy] = usePostSingleVacancyMutation();
 
 	const { data: addresses } = useGetAddressesRefQuery();
 
@@ -156,7 +158,22 @@ export const AddVacancyDrawer: FC<IDrawerProps> = ({ onClose, isOpen }) => {
 		fieldNames[item.id] = item.name;
 	});
 
-	console.log(formController);
+	async function handlePostVacancy() {
+		const result = await postVacancy({
+			position_id: formController.position_id,
+			department_id: formController.department_id,
+			grade_id: formController.grade_id,
+			employee_count: 1,
+			priority_code: 1,
+			salary_from: 50000,
+			salary_to: 80000,
+			deadline: '2023-10-22',
+			adress_code: Number(formController.adress_code),
+			project: 'Gefest Pro',
+		});
+		console.log(result);
+	}
+
 	return (
 		<Drawer onClose={onClose} isOpen={isOpen} size='xl'>
 			<DrawerOverlay />
