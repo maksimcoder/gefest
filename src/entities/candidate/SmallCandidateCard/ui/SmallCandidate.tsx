@@ -28,13 +28,13 @@ interface ISmallCandidateCardProps {
 
 export const SmallCandidateCard: FC<ISmallCandidateCardProps> = ({
 	id,
-	firstName = 'Анна',
-	lastName = 'Игнатян',
-	salaryMinimum = 60000,
-	position = 'Аналитик',
-	address = 'Нижний Новгород',
-	experience = 6,
-	grade = 'junior',
+	firstName,
+	lastName,
+	salaryMinimum,
+	position,
+	address,
+	experience,
+	grade,
 	onDelete,
 }) => {
 	const salary = `${salaryMinimum} ₽`;

@@ -12,7 +12,18 @@ export const viewerApi = createApi({
 				method: ApiMethods.GET,
 			}),
 		}),
+		getUser: builder.query<ApiViewer, string>({
+			query: (id) => ({
+				url: `${ApiPaths.USERS}/${id}`,
+				method: ApiMethods.GET,
+			}),
+		}),
 	}),
 });
 
-export const { useGetViewerQuery, useLazyGetViewerQuery } = viewerApi;
+export const {
+	useGetViewerQuery,
+	useLazyGetViewerQuery,
+	useGetUserQuery,
+	useLazyGetUserQuery,
+} = viewerApi;

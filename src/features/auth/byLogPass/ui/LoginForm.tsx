@@ -107,6 +107,7 @@ export const LoginForm: FC = () => {
 						variant='solid'
 						isLoading={isLoading || isUserLoading}
 						loadingText='Выполняется вход'
+						pointerEvents={isLoading || isUserLoading ? 'none' : 'auto'}
 						bg={ColorPalette.GRAY_3}
 						color={ColorPalette.BLACK_2}>
 						Войти

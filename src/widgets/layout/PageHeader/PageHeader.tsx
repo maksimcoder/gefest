@@ -14,6 +14,7 @@ interface IPageHeaderProps {
 	buttonValue?: string;
 	onButtonClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 	peopleFound?: number;
+	plurals: string[];
 }
 
 export const PageHeader: FC<IPageHeaderProps> = ({
@@ -21,9 +22,10 @@ export const PageHeader: FC<IPageHeaderProps> = ({
 	buttonValue,
 	onButtonClick,
 	peopleFound,
+	plurals,
 }) => {
 	const [smallerSizes] = useMediaQuery('(max-width: 1500px)');
-	const plurals = ['результат', 'результата', 'результатов'];
+	const pluralFind = ['Найден', 'Найдено'];
 
 	function makePlural(number?: number) {
 		if (!isDefined(number)) return '';
@@ -44,6 +46,18 @@ export const PageHeader: FC<IPageHeaderProps> = ({
 		return plurals[1];
 	}
 
+	function makePluralFind(number?: number) {
+		if (!isDefined(number)) return '';
+		const lastNumber = Number(String(number)[String(number).length - 1]);
+
+		if (lastNumber === 1) {
+			return pluralFind[0];
+		} else {
+			return pluralFind[1];
+		}
+	}
+
+	console.log(peopleFound);
 	return (
 		<Stack sx={pageHeaderSx(smallerSizes)} as='header' className='page-header'>
 			<PageTitle>{clientRouteValues[pageTitleKey]}</PageTitle>
@@ -59,11 +73,12 @@ export const PageHeader: FC<IPageHeaderProps> = ({
 				</Button>
 			</Flex>
 			<Text
+				style={{ marginTop: 0 }}
 				visibility={peopleFound ? 'visible' : 'hidden'}
 				fontWeight={300}
-				fontSize='18px'
+				fontSize='15px'
 				color={ColorPalette.GRAY_2}>
-				Найден {peopleFound} {makePlural(peopleFound)}
+				{makePluralFind(peopleFound)} {peopleFound} {makePlural(peopleFound)}
 			</Text>
 			<Box paddingRight='30px' className='divider-wrapper'>
 				<Divider sx={dividerSx} />

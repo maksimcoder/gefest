@@ -42,8 +42,6 @@ export const useCandidatesList = () => {
 		}
 	}
 
-	if (data?.count) updateCount?.(data.count);
-
 	if (isError) {
 		toast({
 			title: 'Произошла ошибка',
@@ -69,6 +67,8 @@ export const useCandidatesList = () => {
 			);
 		}
 	);
+
+	updateCount?.(candidatesListElements?.length || 0);
 
 	return {
 		candidatesListElements,

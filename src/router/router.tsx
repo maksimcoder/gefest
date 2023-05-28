@@ -19,6 +19,12 @@ const router = createBrowserRouter([
 					</LayoutRoute>
 				),
 			},
+			{
+				path: EClientRoutes.Vacancies,
+				element: (
+					<LayoutRoute>{RoutesComponents[EClientRoutes.Vacancies]}</LayoutRoute>
+				),
+			},
 		],
 	},
 ]);

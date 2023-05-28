@@ -5,16 +5,19 @@ const LoginMutationZod = z.object({
 	password: z.string(),
 });
 
+import { CompanyItemZod } from 'entities/company';
+
 const ApiViewerZod = z.object({
+	id: z.string(),
 	username: z.string(),
 	role_code: z.number(),
 	company_id: z.string(),
 	first_name: z.string(),
 	last_name: z.string(),
 	middle_name: z.string().optional(),
-	department_id: z.string().nullable(),
-	position_id: z.string().nullable(),
-	grade_id: z.string().nullable(),
+	department: CompanyItemZod,
+	position: CompanyItemZod,
+	grade: CompanyItemZod,
 	email: z.string(),
 });
 
