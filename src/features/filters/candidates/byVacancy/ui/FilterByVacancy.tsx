@@ -1,16 +1,21 @@
 import { FC } from 'react';
-import { Menu, MenuButton, MenuList, MenuItem, Button } from '@chakra-ui/react';
+import { Menu, MenuButton, MenuList, Button, Spinner, Center } from '@chakra-ui/react';
+import { useFilterCandidatesByVacancy } from '../model';
 
 export const FilterByVacancy: FC = () => {
+	const { menuItems, load, isLoading, isFetching } = useFilterCandidatesByVacancy();
+	const loading = isLoading || isFetching;
+
+	const spinnerElement = (
+		<Center>
+			<Spinner />
+		</Center>
+	);
+
 	return (
-		<Menu>
+		<Menu onOpen={() => load(undefined, true)}>
 			<MenuButton as={Button}>Вакансия</MenuButton>
-			<MenuList>
-				<MenuItem>manager</MenuItem>
-				<MenuItem>manager</MenuItem>
-				<MenuItem>manager</MenuItem>
-				<MenuItem>manager</MenuItem>
-			</MenuList>
+			<MenuList>{loading ? spinnerElement : menuItems}</MenuList>
 		</Menu>
 	);
 };

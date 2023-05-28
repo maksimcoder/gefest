@@ -35,4 +35,5 @@ export const {
 	useGetCompanyDepartmentsQuery,
 	useGetCompanyGradesQuery,
 	useGetCompanyPositionsQuery,
+	useLazyGetCompanyPositionsQuery,
 } = companyApi;

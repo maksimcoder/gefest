@@ -8,6 +8,7 @@ export const CandidatesList: FC = () => {
 	const { candidatesListElements, isFetching, isLoading } = useCandidatesList();
 	const loading = isLoading || isFetching;
 	const candidatesGridSx: SystemStyleObject = {
+		marginTop: '30px',
 		paddingRight: '5vw',
 		gridTemplateColumns: `repeat(auto-fit, minmax(470px, 1fr))`,
 		gridAutoRows: 'max-content',

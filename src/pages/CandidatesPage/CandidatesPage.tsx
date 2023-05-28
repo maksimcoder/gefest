@@ -10,9 +10,11 @@ import { PageHeader } from 'widgets';
 import { DataOperations } from 'widgets/DataOperations/DataOperations';
 import { CandidatesList } from 'features/candidates';
 import { useContextFilters } from './useContextFilters';
+import { FilterByVacancy } from 'features/filters/candidates';
+import { FilterByIncome } from 'features/filters/candidates/byIncome';
 
 const CandidatesPage: FC = () => {
-	const { filters, updateFilters } = useContextFilters();
+	const { filters, updateFilters, count, updateCount } = useContextFilters();
 	const { refreshColorOnUnmount, changeColorOnMount } = useBodyBkgColor(
 		ColorPalette.GRAY_6
 	);
@@ -30,16 +32,18 @@ const CandidatesPage: FC = () => {
 				value={{
 					filters,
 					updateFilters,
+					count,
+					updateCount,
 				}}>
 				<PageHeader
 					pageTitleKey={EClientRouteKeys.Candidates}
 					buttonValue='Добавить кандидата'
+					peopleFound={count}
 				/>
 				<DataOperations>
 					<DataOperations.Filters>
-						<Box>Filter 1</Box>
-						<Box>Filter 2</Box>
-						<Box>Filter 3</Box>
+						<FilterByVacancy />
+						<FilterByIncome />
 					</DataOperations.Filters>
 				</DataOperations>
 				<CandidatesList />

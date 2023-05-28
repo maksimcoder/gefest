@@ -17,8 +17,7 @@ export const useCandidatesList = () => {
 		position: 'bottom-right',
 		isClosable: true,
 	});
-	const { filters } = useContext(CandidatesPageContext);
-	console.log(filters);
+	const { filters, updateCount } = useContext(CandidatesPageContext);
 	const { data, isLoading, isFetching, isSuccess, isError } = useGetCandidateslistQuery(
 		filters || {}
 	);
@@ -42,6 +41,8 @@ export const useCandidatesList = () => {
 			});
 		}
 	}
+
+	if (data?.count) updateCount?.(data.count);
 
 	if (isError) {
 		toast({

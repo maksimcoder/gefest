@@ -6,6 +6,7 @@ type IPageFilters = GetCandidatesListParamsZod;
 
 export const useContextFilters = () => {
 	const [filters, setFilters] = useState<IPageFilters>({});
+	const [count, setCount] = useState<number | undefined>();
 
 	function updateFilters(filters: IPageFilters) {
 		setFilters((prevState) => {
@@ -16,8 +17,14 @@ export const useContextFilters = () => {
 		});
 	}
 
+	function updateCount(count: number) {
+		setCount(count);
+	}
+
 	return {
 		filters,
 		updateFilters,
+		count,
+		updateCount,
 	};
 };
