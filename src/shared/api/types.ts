@@ -1,4 +1,4 @@
-export const BASE_API_URL = 'https://almax-dev.ru';
+export const BASE_API_URL = 'https://almax-dev.ru/api/v1';
 
 export const enum ApiPaths {
 	// Auth

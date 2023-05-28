@@ -1,4 +1,12 @@
-import { Grid, useMediaQuery, Spinner, AbsoluteCenter } from '@chakra-ui/react';
+import {
+	Grid,
+	useMediaQuery,
+	Spinner,
+	AbsoluteCenter,
+	SystemStyleObject,
+	Box,
+	Tooltip,
+} from '@chakra-ui/react';
 import { SmallVacancyCard } from 'entities/vacancy';
 import { ColorPalette, KanbanItem } from 'shared';
 import { useVacancyDesk } from './useVacancyDesk';
@@ -7,6 +15,11 @@ export const VacancyDesk = () => {
 	const [smallerSizes] = useMediaQuery('(max-width: 1500px)');
 	const { kanbanElements, isLoading, isFetching } = useVacancyDesk();
 	const loading = isLoading || isFetching;
+	const mockKanbanItemSx: SystemStyleObject = {
+		opacity: 0.5,
+		userSelect: 'none',
+		cursor: 'not-allowed',
+	};
 
 	const spinnerElem = (
 		<AbsoluteCenter>
@@ -29,19 +42,29 @@ export const VacancyDesk = () => {
 			gridAutoFlow='column'
 			columnGap='30px'>
 			{kanbanElements}
-			<KanbanItem title='Бэклог' color={ColorPalette.PURPLE_1}>
-				<SmallVacancyCard
-					id='124124124'
-					deadLine='29.05.2023'
-					title='Project Manager'
-					grade='Middle'
-					salaryFrom={700}
-					salaryTo={1200}
-					department='Департамент менеджмента'
-					priority='Высокий'
-					isUndeletable
-				/>
-			</KanbanItem>
+			<Tooltip label='in version 1.1'>
+				<Box>
+					<KanbanItem
+						sx={mockKanbanItemSx}
+						title='Бэклог'
+						color={ColorPalette.PURPLE_1}>
+						<SmallVacancyCard
+							id='124124124'
+							deadLine='2023-05-29'
+							title='Project Manager'
+							grade='Middle'
+							salaryFrom={700}
+							salaryTo={1200}
+							department='Департамент менеджмента'
+							priority='Высокий'
+							isUndeletable
+							sx={{
+								pointerEvents: 'none',
+							}}
+						/>
+					</KanbanItem>
+				</Box>
+			</Tooltip>
 		</Grid>
 	);
 

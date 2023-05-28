@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Box, Fade, useBoolean } from '@chakra-ui/react';
+import { Box, Fade, useBoolean, useDisclosure } from '@chakra-ui/react';
 import { CandidatesPageContext } from 'features/context';
 
 import { ColorPalette } from 'shared';
@@ -12,10 +12,12 @@ import { FilterByDate } from 'features/filters/byDate';
 import { FilterByRecruiter } from 'features/filters/vacancies/byRecruiter';
 import { useContextFilters } from 'pages/CandidatesPage/useContextFilters';
 import { VacancyDesk } from 'features/vacancies/VacancyDesk';
+import { AddVacancyDrawer } from 'features/drawers';
 
 const VacanciesPage: FC = () => {
 	const [isMount, setMount] = useBoolean();
 	const { filters, updateFilters, count, updateCount } = useContextFilters();
+	const { isOpen, onOpen, onClose } = useDisclosure();
 	const plurals = ['вакансия', 'вакансии', 'вакансий'];
 	const { refreshColorOnUnmount, changeColorOnMount } = useBodyBkgColor(
 		ColorPalette.GRAY_6
@@ -44,6 +46,7 @@ const VacanciesPage: FC = () => {
 					<PageHeader
 						pageTitleKey={EClientRouteKeys.Vacancies}
 						buttonValue='Добавить вакансию'
+						onButtonClick={onOpen}
 						plurals={plurals}
 						hideSearch
 					/>
@@ -58,6 +61,7 @@ const VacanciesPage: FC = () => {
 					<VacancyDesk />
 				</Fade>
 			</Box>
+			<AddVacancyDrawer isOpen={isOpen} onClose={onClose} />
 		</CandidatesPageContext.Provider>
 	);
 };

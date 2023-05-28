@@ -116,7 +116,7 @@ export const LoginForm: FC = () => {
 						<Tooltip
 							placement='top'
 							isOpen={showCheckTooltip}
-							label='version 2.0'>
+							label='in version 1.1'>
 							<Box className='controls__tooltip-box'>
 								<Checkbox
 									isDisabled
@@ -130,7 +130,7 @@ export const LoginForm: FC = () => {
 						<Tooltip
 							placement='top'
 							isOpen={showPassTooltip}
-							label='version 2.0'>
+							label='in version 1.1'>
 							<Text
 								onMouseEnter={() => setShowPassTooltip(true)}
 								onMouseLeave={() => setShowPassTooltip(false)}

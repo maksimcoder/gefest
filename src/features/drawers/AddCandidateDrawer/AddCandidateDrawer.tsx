@@ -17,6 +17,7 @@ import {
 	DrawerFooter,
 	Button,
 } from '@chakra-ui/react';
+import { useForm } from 'react-hook-form';
 import { infoBlockSx, inputSx } from './styles';
 import { ColorPalette, Text } from 'shared';
 import { Input } from './components';
@@ -26,7 +27,9 @@ interface IDrawerProps {
 	isOpen: boolean;
 }
 
+// * Из-за нехватки времени, этот компонент был сделан не так, как должен был - прошу это учитывать
 export const AddCandidateDrawer: FC<IDrawerProps> = ({ onClose, isOpen }) => {
+	// const  = useForm();
 	return (
 		<Drawer onClose={onClose} isOpen={isOpen} size='xl'>
 			<DrawerOverlay />

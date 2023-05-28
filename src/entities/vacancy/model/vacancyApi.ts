@@ -31,6 +31,20 @@ interface IApiVacancy {
 	skills?: string[];
 }
 
+interface IPostVacancy {
+	position_id: string;
+	department_id: string;
+	grade_id: string;
+	employee_count: number;
+	priority_code: number;
+	salary_from: number;
+	salary_to: number;
+	deadline: string;
+	adress_code: number;
+	project: string;
+	skills: string[];
+}
+
 export const vacanciesApi = createApi({
 	reducerPath: 'vacanciesApi',
 	baseQuery: baseQueryWithReauth,

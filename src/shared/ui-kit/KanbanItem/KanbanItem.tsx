@@ -7,10 +7,11 @@ import { Text } from '../Text';
 interface IKanbanItemProps {
 	title: string;
 	color: ColorPalette;
+	sx?: SystemStyleObject;
 	children?: ReactNode;
 }
 
-export const KanbanItem: FC<IKanbanItemProps> = ({ title, color, children }) => {
+export const KanbanItem: FC<IKanbanItemProps> = ({ title, color, sx, children }) => {
 	const [smallerSizes] = useMediaQuery('(max-width: 1500px)');
 	const gridItemSx: SystemStyleObject = {
 		borderRadius: '20px 20px 0 0',
@@ -30,7 +31,7 @@ export const KanbanItem: FC<IKanbanItemProps> = ({ title, color, children }) => 
 	};
 
 	return (
-		<GridItem sx={gridItemSx} className='orders'>
+		<GridItem sx={{ ...gridItemSx, ...sx }} className='orders'>
 			<Box sx={titleBoxSx}>
 				<Text fontSize='24px' marginBottom='10px' fontWeight={500} color={color}>
 					{title}

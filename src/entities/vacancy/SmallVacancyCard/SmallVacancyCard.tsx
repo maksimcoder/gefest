@@ -8,6 +8,7 @@ import {
 	Badge,
 	Flex,
 	Avatar,
+	SystemStyleObject,
 } from '@chakra-ui/react';
 import { ColorPalette, Text } from 'shared';
 import { useComponentDidMount } from 'shared/hooks';
@@ -24,6 +25,7 @@ interface ISmallVacancyProps {
 	department?: string;
 	priority?: string;
 	isUndeletable?: boolean;
+	sx?: SystemStyleObject;
 	onCrossClick?: (id: string) => void;
 }
 
@@ -37,6 +39,7 @@ export const SmallVacancyCard: FC<ISmallVacancyProps> = ({
 	department,
 	priority,
 	isUndeletable,
+	sx,
 	onCrossClick,
 }) => {
 	const [isMount, setMount] = useBoolean();
@@ -67,7 +70,7 @@ export const SmallVacancyCard: FC<ISmallVacancyProps> = ({
 			<Flex
 				direction='column'
 				justifyContent='space-between'
-				sx={boxSx}
+				sx={{ ...boxSx, ...sx }}
 				className='vacancy'>
 				<Stack maxWidth='234px' className='vacancy__content'>
 					{deadLine && (
