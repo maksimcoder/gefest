@@ -17,7 +17,7 @@ export const Navbar: FC = () => {
 	const navigationIcons: Record<EClientRouteKeys, ReactElement> = {
 		[EClientRouteKeys.Candidates]: <IconCandidates />,
 		[EClientRouteKeys.Vacancies]: <IconVacancies />,
-		[EClientRouteKeys.Calendar]: <CalendarIcon />,
+		[EClientRouteKeys.Calendar]: <CalendarIcon ml="15px" mr="15px" boxSize="30px" />,
 	};
 
 	const navigationLinks = Object.entries(navigationRoutes).map(
