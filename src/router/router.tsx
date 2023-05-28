@@ -25,6 +25,12 @@ const router = createBrowserRouter([
 					<LayoutRoute>{RoutesComponents[EClientRoutes.Vacancies]}</LayoutRoute>
 				),
 			},
+			{
+				path: EClientRoutes.Calendar,
+				element: (
+					<LayoutRoute>{RoutesComponents[EClientRoutes.Calendar]}</LayoutRoute>
+				),
+			},
 		],
 	},
 ]);

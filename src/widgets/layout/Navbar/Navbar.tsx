@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, IconButton, Stack, useBoolean, Fade } from '@chakra-ui/react';
-import { ArrowRightIcon, ArrowLeftIcon } from '@chakra-ui/icons';
+import { CalendarIcon, ArrowRightIcon, ArrowLeftIcon } from '@chakra-ui/icons';
 
 import { clientRouteValues, EClientRouteKeys, navigationRoutes } from 'router/routes';
 
@@ -17,6 +17,7 @@ export const Navbar: FC = () => {
 	const navigationIcons: Record<EClientRouteKeys, ReactElement> = {
 		[EClientRouteKeys.Candidates]: <IconCandidates />,
 		[EClientRouteKeys.Vacancies]: <IconVacancies />,
+		[EClientRouteKeys.Calendar]: <CalendarIcon />,
 	};
 
 	const navigationLinks = Object.entries(navigationRoutes).map(

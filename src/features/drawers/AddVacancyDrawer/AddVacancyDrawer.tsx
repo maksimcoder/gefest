@@ -15,17 +15,13 @@ import {
 	MenuButton,
 	Menu,
 	MenuItem,
+	Alert,
+	AlertIcon,
 } from '@chakra-ui/react';
 import { infoBlockSx } from './styles';
 import { ColorPalette, IDictionaryItem, Text } from 'shared';
-import {
-	CompanyItem,
-	useGetCompanyDepartmentsQuery,
-	useGetCompanyGradesQuery,
-	useGetCompanyPositionsQuery,
-} from 'entities/company';
+import { CompanyItem, useGetCompanyPositionsQuery } from 'entities/company';
 import { useGetAddressesRefQuery } from 'entities/refs';
-import { useComponentDidMount } from 'shared/hooks';
 import { usePostSingleVacancyMutation } from 'entities/vacancy';
 
 interface IDrawerProps {
@@ -115,8 +111,6 @@ type VacancyFormValues = keyof typeof INITIAL_FORM_VALUES;
 // * Из-за нехватки времени, этот компонент был сделан не так, как должен был - прошу это учитывать
 export const AddVacancyDrawer: FC<IDrawerProps> = ({ onClose, isOpen }) => {
 	const { data: positions } = useGetCompanyPositionsQuery();
-	const { data: departments } = useGetCompanyDepartmentsQuery();
-	const { data: grades } = useGetCompanyGradesQuery();
 	const [postVacancy] = usePostSingleVacancyMutation();
 
 	const { data: addresses } = useGetAddressesRefQuery();
@@ -137,24 +131,7 @@ export const AddVacancyDrawer: FC<IDrawerProps> = ({ onClose, isOpen }) => {
 		return ref?.find((refItem) => refItem.code === code)?.value;
 	}
 
-	function makeFieldNames(array: CompanyItem[][]) {
-		const flatened = array.flatMap((item) => item);
-		flatened.forEach((item) => (fieldNames[item.id] = item.name));
-	}
-
 	positions?.positions.forEach((item) => {
-		fieldNames[item.id] = item.name;
-	});
-
-	useComponentDidMount(() => {
-		makeFieldNames([
-			positions?.positions ?? [],
-			departments?.departments ?? [],
-			grades?.grades ?? [],
-		]);
-	});
-
-	departments?.departments.forEach((item) => {
 		fieldNames[item.id] = item.name;
 	});
 
@@ -173,7 +150,7 @@ export const AddVacancyDrawer: FC<IDrawerProps> = ({ onClose, isOpen }) => {
 		});
 		console.log(result);
 	}
-
+	console.log(formController);
 	return (
 		<Drawer onClose={onClose} isOpen={isOpen} size='xl'>
 			<DrawerOverlay />
@@ -209,27 +186,15 @@ export const AddVacancyDrawer: FC<IDrawerProps> = ({ onClose, isOpen }) => {
 										options={addresses}
 									/>
 								</Flex>
-								<Flex gap='20px'>
-									<VacancyCompanyMenu
-										onClick={handleControllerChange}
-										fieldName='position_id'
-										buttonValue={
-											fieldNames[formController.department_id] ||
-											'Отдел'
-										}
-										options={departments?.departments}
-									/>
-									<VacancyCompanyMenu
-										onClick={handleControllerChange}
-										fieldName='position_id'
-										buttonValue={
-											fieldNames[formController.grade_id] || 'Грейд'
-										}
-										options={grades?.grades}
-									/>
-								</Flex>
 							</Stack>
 						</Box>
+						<Alert status='info'>
+							<AlertIcon />
+							К сожалению, сейчас к отправке доступны лишь 2 свойства.{' '}
+							<br />
+							Остальные данные будут заполнены автоматически <br />
+							Остальное ожидается в версии 1.1
+						</Alert>
 					</Stack>
 				</DrawerBody>
 				<DrawerFooter>
