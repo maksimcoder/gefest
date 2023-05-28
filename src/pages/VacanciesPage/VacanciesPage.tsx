@@ -45,6 +45,7 @@ const VacanciesPage: FC = () => {
 						pageTitleKey={EClientRouteKeys.Vacancies}
 						buttonValue='Добавить вакансию'
 						plurals={plurals}
+						hideSearch
 					/>
 					<DataOperations>
 						<DataOperations.Filters>
@@ -53,7 +54,9 @@ const VacanciesPage: FC = () => {
 						</DataOperations.Filters>
 					</DataOperations>
 				</Fade>
-				<VacancyDesk />
+				<Fade in={isMount}>
+					<VacancyDesk />
+				</Fade>
 			</Box>
 		</CandidatesPageContext.Provider>
 	);

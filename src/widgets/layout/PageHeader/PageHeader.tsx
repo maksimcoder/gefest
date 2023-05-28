@@ -15,6 +15,7 @@ interface IPageHeaderProps {
 	onButtonClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 	peopleFound?: number;
 	plurals: string[];
+	hideSearch?: boolean;
 }
 
 export const PageHeader: FC<IPageHeaderProps> = ({
@@ -23,6 +24,7 @@ export const PageHeader: FC<IPageHeaderProps> = ({
 	onButtonClick,
 	peopleFound,
 	plurals,
+	hideSearch,
 }) => {
 	const [smallerSizes] = useMediaQuery('(max-width: 1500px)');
 	const pluralFind = ['Найден', 'Найдено'];
@@ -62,7 +64,7 @@ export const PageHeader: FC<IPageHeaderProps> = ({
 		<Stack sx={pageHeaderSx(smallerSizes)} as='header' className='page-header'>
 			<PageTitle>{clientRouteValues[pageTitleKey]}</PageTitle>
 			<Flex sx={interactiveRow} justifyContent='space-between'>
-				<SearchFio />
+				{!hideSearch && <SearchFio />}
 				<Button
 					sx={buttonStyle}
 					onClick={onButtonClick}
