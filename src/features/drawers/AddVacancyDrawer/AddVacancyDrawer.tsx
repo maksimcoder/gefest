@@ -237,7 +237,11 @@ export const AddVacancyDrawer: FC<IDrawerProps> = ({ onClose, isOpen }) => {
 						<Button width='200px' size='lg' colorScheme='blackAlpha'>
 							Отменить
 						</Button>
-						<Button width='200px' size='lg' colorScheme='blue'>
+						<Button
+							onClick={handlePostVacancy}
+							width='200px'
+							size='lg'
+							colorScheme='blue'>
 							Сохранить
 						</Button>
 					</Flex>
