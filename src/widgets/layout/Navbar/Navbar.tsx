@@ -6,7 +6,7 @@ import { ArrowRightIcon, ArrowLeftIcon } from '@chakra-ui/icons';
 import { clientRouteValues, EClientRouteKeys, navigationRoutes } from 'router/routes';
 
 import { HammerLogo, Text } from 'shared/ui-kit';
-import { IconCandidates } from 'shared/icons/navigation';
+import { IconCandidates, IconVacancies } from 'shared/icons/navigation';
 
 import { navbarBtnSx, navbarContentSx, navbarSx, navLinkSx } from './styles';
 import { ColorPalette } from 'shared/types';
@@ -15,6 +15,7 @@ export const Navbar: FC = () => {
 	const [isOpen, setOpen] = useBoolean();
 	const navigationIcons: Record<EClientRouteKeys, ReactElement> = {
 		[EClientRouteKeys.Candidates]: <IconCandidates />,
+		[EClientRouteKeys.Vacancies]: <IconVacancies />,
 	};
 
 	const navigationLinks = Object.entries(navigationRoutes).map(

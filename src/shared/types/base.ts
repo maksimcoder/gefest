@@ -20,6 +20,10 @@ export type SearchQueryBooleanType = 'true' | 'false';
 export type QueryBooleanSerializer = (value: boolean) => string;
 export type QueryArraySerializer = (value: (number | string)[]) => string;
 
-// export interface IInputController {
-
-// }
+export const enum SystemRoles {
+	Admin = 1,
+	Employee,
+	Manager,
+	Recruiter,
+	Customer,
+}

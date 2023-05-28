@@ -1,14 +1,21 @@
 import { FC } from 'react';
-import { Center, Grid, Spinner, SystemStyleObject } from '@chakra-ui/react';
+import {
+	Center,
+	Grid,
+	Spinner,
+	SystemStyleObject,
+	useMediaQuery,
+} from '@chakra-ui/react';
 
 import { useCandidatesList } from '../model';
 import { ColorPalette } from 'shared';
 
 export const CandidatesList: FC = () => {
+	const [smallerSizes] = useMediaQuery('(max-width: 1500px)');
 	const { candidatesListElements, isFetching, isLoading } = useCandidatesList();
 	const loading = isLoading || isFetching;
 	const candidatesGridSx: SystemStyleObject = {
-		marginTop: '30px',
+		marginTop: smallerSizes ? '10px' : '30px',
 		paddingRight: '5vw',
 		gridTemplateColumns: `repeat(auto-fit, minmax(470px, 1fr))`,
 		gridAutoRows: 'max-content',

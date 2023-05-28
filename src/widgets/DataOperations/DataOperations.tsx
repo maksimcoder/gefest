@@ -25,7 +25,7 @@ export const DataOperations: FC<IDataOperationsProps> & IDataOperationSubCompone
 	// const sorts = findChildComponentByType(children, DataOperations.Filters);
 
 	return (
-		<Flex gap='200px' className='data-operations'>
+		<Flex className='data-operations'>
 			<Stack direction='row' className='data-operttions__filters'>
 				<Text fontSize='22px' fontWeight={300}>
 					Фильтр по:

@@ -10,6 +10,7 @@ export const GetCandidatesListParamsZod = z.object({
 	position_id: z.string().optional(),
 	salary_from: z.string().optional(),
 	salary_to: z.string().optional(),
+	recruiter_id: z.string().optional(),
 });
 
 export type GetCandidatesListParamsZod = z.infer<typeof GetCandidatesListParamsZod>;

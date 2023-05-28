@@ -3,7 +3,7 @@ import { ColorPalette } from 'shared';
 
 export const pageHeaderSx = (smallerSizes?: boolean): SystemStyleObject => {
 	return {
-		padding: `${smallerSizes ? '30px' : '60px'} 0 30px`,
+		padding: `${smallerSizes ? '30px' : '60px'} 0 15px`,
 	};
 };
 
