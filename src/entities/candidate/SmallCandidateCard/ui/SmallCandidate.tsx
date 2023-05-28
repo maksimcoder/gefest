@@ -1,14 +1,4 @@
-import {
-	Avatar,
-	Badge,
-	Stack,
-	CloseButton,
-	Spinner,
-	Center,
-	Flex,
-	Fade,
-	useBoolean,
-} from '@chakra-ui/react';
+import { Avatar, Badge, Stack, CloseButton, Fade, useBoolean } from '@chakra-ui/react';
 import { FC } from 'react';
 import { ColorPalette, Text } from 'shared';
 import { IconMapPin } from 'shared/icons/candidate/smallCandidate';
